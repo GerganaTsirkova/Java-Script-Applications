@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bus Stop</title>
+    <style>
+        #stopName {
+            font-size: 1.5em;
+            font-weight: 400;
+            padding: 0.25em;
+            background-color: aquamarine;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div id="stopInfo" style="width:20em">
+    <div>
+        <label for="stopId">Stop ID: </label>
+        <input id="stopId" type="text">
+        <input id="submit" type="button" value="Check" onclick="getInfo()"></div>
+    <div id="result">
+        <div id="stopName"></div>
+        <ul id="buses"></ul>
+    </div>
+</div>
+<script>
+    function getInfo() {
+        const URL = 'https://judgetests.firebaseio.com/businfo/';
+        const stop = $('#stopId');
+        let btn = $('#submit');
+        $('#buses').empty();
+
+        btn.click(
+            $.ajax({
+                method: 'GET',
+                url: URL + '/' + stop.val() + '.json',
+                success: succeedFunction,
+                error: errorFunc
+            })
+        );
+
+        function succeedFunction(res){
+            if((stop.val()==='1287')||(stop.val()==='1308')||(stop.val()==='1327')||(stop.val()==='2334')){
+                $('#stopName').text(`${res.name}`);
+                let keys = Object.keys(res.buses);
+                let values = Object.values(res.buses);
+                for (let i = 0; i < values.length; i++) {
+                    let li = $(`<li>Bus ${keys[i]} arrives in ${values[i]} minutes</li>`);
+                    $('#buses').append(li)
+                }
+            }
+            else {
+                $('#stopName').text('Error')
+            }
+            stop.val('');
+        }
+
+        function errorFunc() {
+            $('#stopName').text('Error')
+        }
+    }
+</script>
+</body>
+</html>
