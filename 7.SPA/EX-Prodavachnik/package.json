@@ -1,0 +1,8 @@
+{
+  "name": "EX-Prodavachnik",
+  "version": "1.0.0",
+  "dependencies": {
+    "handlebars": "^4.0.12",
+    "jquery": "^3.3.1"
+  }
+}
