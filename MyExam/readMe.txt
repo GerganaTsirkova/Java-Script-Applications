@@ -1,4 +1,6 @@
 
+This project was my last exam. I was given the html and the css file and I had to make the functionality of the site for 6 hours. 
+
 JS Apps Exam – Pet My Pet Single Page Application
 
 Using libraries like jQuery, Handlebars and Sammy is allowed but is not obligatory. You are assigned to implement a Web application (SPA) using HTML5, JavaScript, AJAX, REST and JSON with cloud-based backend (Kinvey). The app keeps users and pets. Users can register, login, logout , view a dashboard with all pets sorted by likes (a helper function will be given). They will also be able to view the pets by category, add a new pet, edit/delete their own pets, show other pets details and a section where they can view their own pets.
